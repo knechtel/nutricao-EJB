@@ -4,6 +4,8 @@ configure datasource wildfly
 
 
 > prerequisite
+make sure that you heve mysql server installed and one schema test created.
+
 https://www.youtube.com/watch?v=xSHXMcRsF0A
 
 [![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://www.youtube.com/watch?v=xSHXMcRsF0A)
