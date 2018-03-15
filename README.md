@@ -18,3 +18,11 @@ https://www.youtube.com/watch?v=xSHXMcRsF0A
 3)Maven>Update Project
 
 4)click right button on project nutricao-WEB >Properties then >Project Reference select nutricao-EJB
+
+5)Make a project nutricao-EAR
+
+
+
+<br>
+<img src='https://4.bp.blogspot.com/-Zv6p0J5tEZ4/WqoPo7-jh1I/AAAAAAAADLA/G-3AYh_rdigrqOXWgGnVOdtRYW8W2X2iQCLcBGAs/s320/Screen%2BShot%2B2018-03-15%2Bat%2B03.13.44.png'/>
+</br>
