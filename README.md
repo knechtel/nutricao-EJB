@@ -39,4 +39,4 @@ https://www.youtube.com/watch?v=xSHXMcRsF0A
 
 7)Now we access this url http://localhost:8080/nutricao-WEB/test.jsf
 
-look the database and make sure that we have um user inserted in database.
+look the database and make sure that we have one user inserted in database.
