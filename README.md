@@ -24,5 +24,5 @@ https://www.youtube.com/watch?v=xSHXMcRsF0A
 
 
 <br>
-<img src='https://4.bp.blogspot.com/-Zv6p0J5tEZ4/WqoPo7-jh1I/AAAAAAAADLA/G-3AYh_rdigrqOXWgGnVOdtRYW8W2X2iQCLcBGAs/s320/Screen%2BShot%2B2018-03-15%2Bat%2B03.13.44.png'/>
+<img src='https://4.bp.blogspot.com/-Zv6p0J5tEZ4/WqoPo7-jh1I/AAAAAAAADLA/G-3AYh_rdigrqOXWgGnVOdtRYW8W2X2iQCLcBGAs/s1600/Screen%2BShot%2B2018-03-15%2Bat%2B03.13.44.png'/>
 </br>
