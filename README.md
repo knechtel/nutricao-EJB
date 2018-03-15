@@ -3,8 +3,16 @@
 configure datasource wildfly
 
 
+
+
 > prerequisite
-make sure that you heve mysql server installed and one schema test created.
+
+create schema test no mysql
+
+create table usuario with coluns id autoincrement nome varchar and senha varchar
+
+
+
 
 https://www.youtube.com/watch?v=xSHXMcRsF0A
 
