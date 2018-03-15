@@ -3,7 +3,7 @@
 
 configure mysql
 user="root"
-senha=""
+senha="",
 create schema test on mysql
 
 create table usuario with coluns id autoincrement nome varchar and senha varchar
