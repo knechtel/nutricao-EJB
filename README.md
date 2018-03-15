@@ -14,7 +14,7 @@ configure datasource wildfly
 
 > prerequisite
 
-
+ DATASOURSE_NAME = MySqlDS1 
 
 
 
