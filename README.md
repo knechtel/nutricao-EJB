@@ -35,3 +35,8 @@ https://www.youtube.com/watch?v=xSHXMcRsF0A
 <br>
 <img src='https://3.bp.blogspot.com/-KRsidrqAtQI/WqoWOhzJQvI/AAAAAAAADLc/bSfFOoAItoMyM4UgeIO2qQPJAIyiSv95ACLcBGAs/s1600/Screen%2BShot%2B2018-03-15%2Bat%2B03.43.23.png'/>
 </br>
+
+
+7)Now we access this url http://localhost:8080/nutricao-WEB/test.jsf
+
+look the database and make sure that we have um user inserted in database.
