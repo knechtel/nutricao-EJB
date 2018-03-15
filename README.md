@@ -1,15 +1,20 @@
 # nutricao-EJB
 
-configure datasource wildfly
 
+configure mysql
 
-
-
-> prerequisite
 
 create schema test no mysql
 
 create table usuario with coluns id autoincrement nome varchar and senha varchar
+
+
+
+configure datasource wildfly
+
+> prerequisite
+
+
 
 
 
