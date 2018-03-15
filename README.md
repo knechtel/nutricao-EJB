@@ -27,4 +27,11 @@ https://www.youtube.com/watch?v=xSHXMcRsF0A
 <img src='https://4.bp.blogspot.com/-Zv6p0J5tEZ4/WqoPo7-jh1I/AAAAAAAADLA/G-3AYh_rdigrqOXWgGnVOdtRYW8W2X2iQCLcBGAs/s1600/Screen%2BShot%2B2018-03-15%2Bat%2B03.13.44.png'/>
 </br>
 
-6)After create a project nutricao-EAR click rigth button >Project references and select project EJB and WEB
+6)select project nutricao-WEB and nutricao-EJB
+
+
+
+
+<br>
+<img src='https://3.bp.blogspot.com/-KRsidrqAtQI/WqoWOhzJQvI/AAAAAAAADLc/bSfFOoAItoMyM4UgeIO2qQPJAIyiSv95ACLcBGAs/s1600/Screen%2BShot%2B2018-03-15%2Bat%2B03.43.23.png'/>
+</br>
