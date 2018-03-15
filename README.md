@@ -60,7 +60,6 @@ look the database and make sure that we have one user inserted in database.
 my standalone.xml for configure WildFly
 
 
-[retirar isso daqui depois]
 <?xml version='1.0' encoding='UTF-8'?>
 
 <server xmlns="urn:jboss:domain:5.0">
