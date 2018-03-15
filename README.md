@@ -30,7 +30,7 @@ https://www.youtube.com/watch?v=xSHXMcRsF0A
 
 3)Maven>Update Project
 
-4)click right button on project nutricao-WEB >Properties then >Project Reference select nutricao-EJB
+4)click right button on project nutricao-WEB >Properties then >Project Reference select nutricao-EJB apply and close
 
 5)Make a project nutricao-EAR
 
