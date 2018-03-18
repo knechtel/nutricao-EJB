@@ -1,17 +1,13 @@
 package br.com.nutricao.controller;
 
 import java.io.Serializable;
-import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import br.com.nutricao.JpaController.UsuarioControllerRemote;
+import br.com.nutricao.JpaController.UsuarioJpaControllerRemote;
 import br.com.nutricao.bean.Usuario;
 
 @Stateless
@@ -24,15 +20,10 @@ public class UsuarioBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@EJB
-	UsuarioControllerRemote usuarioJPAcontroller;
+	private UsuarioJpaControllerRemote usuarioJPAcontroller;
 
 	private Usuario usuario;
-	
-	
-
 	private Boolean log;
-
-	
 	private String email;
 	private String password;
 
@@ -44,12 +35,7 @@ public class UsuarioBean implements Serializable {
 		usuario.setNome(email);
 		usuario.setPassword(password);
 		Usuario u = usuarioJPAcontroller.findByLoginAndSenha(usuario);
-		
-		
 	
-	   
-	 
-	    
 		if (u != null) {
 		log=true;
 			return "/portal/index.jsf";

@@ -10,8 +10,8 @@ import javax.persistence.PersistenceContext;
 import br.com.nutricao.bean.Usuario;
 
 @Stateless
-@Remote(UsuarioControllerRemote.class)
-public class UsuarioJpaController implements UsuarioControllerRemote {
+@Remote(UsuarioJpaControllerRemote.class)
+public class UsuarioJpaController implements UsuarioJpaControllerRemote {
 	@PersistenceContext(unitName = "nutricao-EJBPU")
 	private EntityManager em;
 

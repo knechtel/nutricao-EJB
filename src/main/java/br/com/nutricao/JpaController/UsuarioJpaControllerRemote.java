@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.nutricao.bean.Usuario;
 
-public interface UsuarioControllerRemote {
+public interface UsuarioJpaControllerRemote {
 
 	void create(br.com.nutricao.bean.Usuario usuario);
 	
