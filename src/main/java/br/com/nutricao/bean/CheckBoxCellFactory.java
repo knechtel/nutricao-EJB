@@ -1,4 +1,4 @@
-package br.com.nutricao_EJB.bean;
+package br.com.nutricao.bean;
 
 public class CheckBoxCellFactory {
 

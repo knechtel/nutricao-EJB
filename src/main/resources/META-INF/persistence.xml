@@ -3,7 +3,7 @@
   <persistence-unit name="nutricao-EJBPU" transaction-type="JTA">
   <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <jta-data-source>java:/MySqlDS1</jta-data-source>
-    <class>br.com.nutricao_EJB.bean.Usuario</class>	
+    <class>br.com.nutricao.bean.Usuario</class>	
          <properties>
       
 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>

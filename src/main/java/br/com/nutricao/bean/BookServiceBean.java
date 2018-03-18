@@ -1,4 +1,4 @@
-package br.com.nutricao_EJB.bean;
+package br.com.nutricao.bean;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

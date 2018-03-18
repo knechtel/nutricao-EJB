@@ -1,28 +1,33 @@
-package br.com.nutricao_EJB.bean;
+package br.com.nutricao.bean;
 
 import java.io.Serializable;
-import java.util.List;
+
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+
+
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+
+
+
 
 @Entity
 @Table(name = "usuario")
+
+@NamedQueries({
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
+    @NamedQuery(name = "Usuario.findByLoginAndPassword", query = "SELECT u FROM Usuario u WHERE u.nome LIKE :nome "
+            + " AND u.senha LIKE :senha")})
 public class Usuario implements Serializable{
 	/**
 	 * 
