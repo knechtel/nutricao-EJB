@@ -36,19 +36,18 @@ public class UsuarioJpaController implements UsuarioJpaControllerRemote {
 	}
 
 	public Usuario findByLoginAndSenha(Usuario usuario) {
-		
-		if (usuario.getNome().equals("")  || usuario.getPassword().equals(""))
+
+		if (usuario.getNome().equals("") || usuario.getPassword().equals(""))
 			return null;
 
 		if (usuario.getNome() == null || usuario.getPassword() == null)
 			return null;
 
-		
-		//tratar se for null
-		List<Usuario> list =   em.createNamedQuery("Usuario.findByLoginAndPassword").setParameter("nome", usuario.getNome())
-				.setParameter("senha", usuario.getPassword()).getResultList();
-		
-		if(list==null||list.size()==0)
+		// tratar se for null
+		List<Usuario> list = em.createNamedQuery("Usuario.findByLoginAndPassword")
+				.setParameter("nome", usuario.getNome()).setParameter("senha", usuario.getPassword()).getResultList();
+
+		if (list == null || list.size() == 0)
 			return null;
 		else
 			return list.get(0);

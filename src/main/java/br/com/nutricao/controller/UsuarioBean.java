@@ -30,7 +30,7 @@ public class UsuarioBean implements Serializable {
 
 	
 
-	public String doTest() {
+	public String doLogin() {
 		usuario = new Usuario();
 		usuario.setNome(email);
 		usuario.setPassword(password);
@@ -46,9 +46,18 @@ public class UsuarioBean implements Serializable {
 		}
 	}
 	
+	public String createUsuario() {
+		usuarioJPAcontroller.create(usuario);
+		return null;
+	}
+	
 	public String doAgenda() {
 		log=true;
-		return "/portal/manterAgenda.jsf";
+		return "/portal/cadPaciente.jsf";
+	}
+	
+	public String doCadUsuario() {
+		return "/createUsr/index.jsf";
 	}
 
 	public Boolean isLoggedIn() {
