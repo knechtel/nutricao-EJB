@@ -4,6 +4,10 @@
   <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <jta-data-source>java:/MySqlDS1</jta-data-source>
     <class>br.com.nutricao.bean.Usuario</class>	
+        <class>br.com.nutricao.bean.AgendaAtendimento</class>	
+            <class>br.com.nutricao.bean.Alimento</class>
+                <class>br.com.nutricao.bean.Paciente</class>
+                    <class>br.com.nutricao.bean.PlanoAlimentar</class>			
          <properties>
       
 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>

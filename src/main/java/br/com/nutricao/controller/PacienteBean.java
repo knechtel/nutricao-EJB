@@ -1,28 +1,40 @@
 package br.com.nutricao.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.faces.bean.SessionScoped;
-import javax.inject.Inject;
+import javax.enterprise.context.RequestScoped;
+
 import javax.inject.Named;
 
 import br.com.nutricao.JpaController.PacienteJpaControllerRemote;
 import br.com.nutricao.bean.Paciente;
 
-@Stateless
-@SessionScoped
-@Named("manterAgenda")
 
-public class ManterAgendaBean {
+@Named("pacienteBean")
+@RequestScoped
+public class PacienteBean {
 	@EJB
 	private PacienteJpaControllerRemote pacienteController;
+	@EJB
+	private PacienteJpaControllerRemote pacienteJpaController;
 
-	
+	private List<Paciente> listPaciente;
 	private Paciente paciente;
 
+	public PacienteBean() {
+
+	}
+	
+	
 	@PostConstruct
 	public void init() {
+		// TODO Auto-generated constructor stub
+		listPaciente = new ArrayList<Paciente>();
+
+		listPaciente = pacienteJpaController.findAll();
 		// In case you're updating an existing entity.
 		paciente = new Paciente();
 	}
@@ -34,7 +46,7 @@ public class ManterAgendaBean {
 	public String goPrincipal() {
 		return "/index.jsf";
 	}
-	
+
 	public Paciente getPaciente() {
 		return paciente;
 	}
@@ -47,5 +59,19 @@ public class ManterAgendaBean {
 		pacienteController.create(paciente);
 		return "cadPacienteSuccess.xhtml";
 	}
+
+	public List<Paciente> getListPaciente() {
+		return listPaciente;
+	}
+
+	public void setListPaciente(List<Paciente> listPaciente) {
+		this.listPaciente = listPaciente;
+	}
+
+	
+	public String doHome() {
+		return "index.jsf";
+	}
+
 
 }

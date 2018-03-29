@@ -16,7 +16,50 @@
 
     <dependencies>
     
-    <!-- spec apis such as javax.persistence -->
+       <!-- Arquillian JUnit Container -->
+        <dependency>
+              <groupId>org.jboss.arquillian.junit</groupId>
+              <artifactId>arquillian-junit-container</artifactId>
+              <scope>test</scope>
+        </dependency>
+              <!-- JUnit -->
+        <dependency>
+              <groupId>junit</groupId>
+              <artifactId>junit</artifactId>
+              <version>4.11</version>
+  <scope>test</scope>
+        </dependency>
+        <!-- Java EE 7 API -->
+        <dependency>
+              <groupId>javax</groupId>
+              <artifactId>javaee-api</artifactId>
+              <version>7.0</version>
+        </dependency>
+    	<!-- Import the CDI API, we use provided scope as the API is included in 
+			WildFly -->
+			
+			<dependency>
+ <groupId>junit</groupId>
+ <artifactId>junit</artifactId>
+ <scope>test</scope>
+</dependency>
+<dependency>
+ <groupId>org.jboss.arquillian.junit</groupId>
+ <artifactId>arquillian-junit-container</artifactId>
+ <version>1.4.0.Final</version>
+ <scope>test</scope>
+</dependency>
+
+
+<dependency>
+ <groupId>org.jboss.arquillian.protocol</groupId>
+ <artifactId>arquillian-protocol-servlet</artifactId>
+  <version>1.4.0.Final</version>
+ <scope>test</scope>
+</dependency>
+
+
+    <!-- FIM -->
     <dependency>
       <groupId>org.apache.openejb</groupId>
       <artifactId>javaee-api</artifactId>
@@ -89,6 +132,35 @@
             <version>6.0</version>
             <scope>provided</scope>
         </dependency>
+        
+        
+     <!-- api -->
+<dependency>
+    <groupId>javax</groupId>
+    <artifactId>javaee-api</artifactId>
+    <version>7.0</version>
+    <scope>provided</scope>
+</dependency>
+<!-- logging -->
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.1.2</version>
+</dependency>
+<!-- testing -->
+<dependency>
+    <groupId>org.jboss.weld.se</groupId>
+    <artifactId>weld-se</artifactId>
+    <version>2.2.10.Final</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.11</version>
+    <scope>test</scope>
+</dependency>
+
   
   </dependencies>
 
@@ -96,6 +168,29 @@
 
     <build>
         <plugins>
+        <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+               <source>1.6</source>
+               <target>1.6</target>
+            </configuration>
+         </plugin>
+         <plugin>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+               <argLine>-Djboss.home=${JBOSS_HOME} -Xmx512m -XX:MaxPermSize=256m -Djava.endorsed.dirs=${JBOSS_HOME}/lib/endorsed</argLine>
+            </configuration>
+            <executions>
+               <execution>
+                  <goals>
+                     <goal>integration-test</goal>
+                     <goal>verify</goal>
+                  </goals>
+               </execution>
+            </executions>
+         </plugin>
+        
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -143,5 +238,7 @@
             </plugin>
         </plugins>
     </build>
-
+    
+    
+     
 </project>

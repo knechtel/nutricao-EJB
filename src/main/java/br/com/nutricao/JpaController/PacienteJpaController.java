@@ -1,5 +1,7 @@
 package br.com.nutricao.JpaController;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -17,6 +19,11 @@ public class PacienteJpaController implements PacienteJpaControllerRemote {
 	public void create(Paciente paciente) {
 		// TODO Auto-generated method stub
 		em.persist(paciente);
+	}
+	
+	public List<Paciente> findAll(){
+		List<Paciente> listPaciente = em.createNamedQuery("Paciente.findAll").getResultList();
+		return listPaciente;
 	}
 
 }

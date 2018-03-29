@@ -7,6 +7,11 @@
   <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
   <property name="hibernate.connection.username">root</property>
   <mapping class="br.com.nutricao_EJB.bean.Usuario"/>
- 
+     	<mapping class="bean.Paciente"/>	      
+			<mapping class="br.com.nutricao.bean.ProfissionalSaude"/>
+		<mapping class="br.com.nutricao.bean.Alimento"/>
+		<mapping class="br.com.nutricao.bean.Paciente"/>
+		<mapping class="br.com.nutricao.bean.Atividade"/> 
+		<mapping class="br.com.nutricao.bean.AgendaAtendimento"/>
  </session-factory>
 </hibernate-configuration>
