@@ -6,12 +6,12 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-
 import javax.inject.Named;
+
+import org.dom4j.io.DocumentSource;
 
 import br.com.nutricao.JpaController.PacienteJpaControllerRemote;
 import br.com.nutricao.bean.Paciente;
-
 
 @Named("pacienteBean")
 @RequestScoped
@@ -20,15 +20,17 @@ public class PacienteBean {
 	private PacienteJpaControllerRemote pacienteController;
 	@EJB
 	private PacienteJpaControllerRemote pacienteJpaController;
+	@EJB 
+	private PacienteJpaControllerRemote pacienteDelete;
 
 	private List<Paciente> listPaciente;
+
 	private Paciente paciente;
 
 	public PacienteBean() {
 
 	}
-	
-	
+
 	@PostConstruct
 	public void init() {
 		// TODO Auto-generated constructor stub
@@ -68,10 +70,22 @@ public class PacienteBean {
 		this.listPaciente = listPaciente;
 	}
 
-	
 	public String doHome() {
 		return "index.jsf";
 	}
 
+	public String doSomething() {
+
+		System.out.println("DAME");
+		return null;
+	}
+
+	public String deleteAction(Paciente paciente) {
+
+		System.out.println(paciente.getId() + " ==  delete ss");
+		listPaciente.remove(paciente);
+		pacienteController.delete(paciente);
+		return null;
+	}
 
 }

@@ -15,15 +15,23 @@ import br.com.nutricao.bean.Paciente;
 public class PacienteJpaController implements PacienteJpaControllerRemote {
 	@PersistenceContext(unitName = "nutricao-EJBPU")
 	private EntityManager em;
+
 	@Override
 	public void create(Paciente paciente) {
 		// TODO Auto-generated method stub
 		em.persist(paciente);
 	}
-	
-	public List<Paciente> findAll(){
+
+	public List<Paciente> findAll() {
 		List<Paciente> listPaciente = em.createNamedQuery("Paciente.findAll").getResultList();
 		return listPaciente;
+	}
+	@Override
+	public void delete(Paciente paciente) {
+		em.createQuery("DELETE FROM Paciente p WHERE id=" + paciente.getId()).executeUpdate();
+		if (em.contains(paciente)){
+		     em.remove(paciente);
+		}
 	}
 
 }
