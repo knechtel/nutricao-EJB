@@ -1,6 +1,6 @@
 # nutricao-EJB
 
-
+technologies used: CDI, JSF, EJB, hibernate and Web server wildfly 11, DB MySql 
 configure mysql
 user="root"
 senha="",
