@@ -53,7 +53,7 @@ public class UsuarioBean implements Serializable {
 	
 	public String doAgenda() {
 		log=true;
-		return "/portal/cadPaciente.xhtml";
+		return "/faces/portal/cadPaciente.xhtml";
 	}
 	
 	public String doCadUsuario() {
