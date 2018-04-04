@@ -21,7 +21,7 @@ public class PacienteJpaController implements PacienteJpaControllerRemote {
 		// TODO Auto-generated method stub
 		em.persist(paciente);
 	}
-
+	@Override
 	public List<Paciente> findAll() {
 		List<Paciente> listPaciente = em.createNamedQuery("Paciente.findAll").getResultList();
 		return listPaciente;

@@ -46,7 +46,7 @@ public class PacienteBean {
 	}
 
 	public String goPrincipal() {
-		return "/index.jsf";
+		return "/index.xhtml";
 	}
 
 	public Paciente getPaciente() {
@@ -71,7 +71,7 @@ public class PacienteBean {
 	}
 
 	public String doHome() {
-		return "index.jsf";
+		return "index.xhtml";
 	}
 
 	public String doSomething() {

@@ -50,7 +50,7 @@ public class ProfissiobalSaudeBean {
 	public String create() {
 		
 		profissionalSaudeRemote.create(profissionalSaude);
-		return "cadPrSuccess.jsf";
+		return "cadPrSuccess.xhtml";
 	}
 
 	public List<ProfissionalSaude> getListProfissionalSaude() {

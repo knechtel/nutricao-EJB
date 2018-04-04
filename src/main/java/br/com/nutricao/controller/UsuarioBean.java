@@ -38,7 +38,7 @@ public class UsuarioBean implements Serializable {
 	
 		if (u != null) {
 		log=true;
-			return "/portal/index.jsf";
+			return "/portal/index.xhtml";
 			
 		} else {
 			log=false;
@@ -53,11 +53,11 @@ public class UsuarioBean implements Serializable {
 	
 	public String doAgenda() {
 		log=true;
-		return "/portal/cadPaciente.jsf";
+		return "/portal/cadPaciente.xhtml";
 	}
 	
 	public String doCadUsuario() {
-		return "/createUsr/index.jsf";
+		return "/createUsr/index.xhtml";
 	}
 
 	public Boolean isLoggedIn() {
