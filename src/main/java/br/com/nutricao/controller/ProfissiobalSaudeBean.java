@@ -23,15 +23,11 @@ public class ProfissiobalSaudeBean {
 	private List<ProfissionalSaude> listProfissionalSaude;
 	
 	public ProfissiobalSaudeBean() {
-		// TODO Auto-generated constructor stub
-		
-
 		
 	}
 
 	@PostConstruct
 	public void init() {
-		// In case you're updating an existing entity.
 		profissionalSaude = new ProfissionalSaude();
 		listProfissionalSaude = new ArrayList<ProfissionalSaude>();
 		listProfissionalSaude = profissionalSaudeRemoteList.findAll();
