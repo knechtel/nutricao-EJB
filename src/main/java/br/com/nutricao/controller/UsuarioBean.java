@@ -23,39 +23,40 @@ public class UsuarioBean implements Serializable {
 	private UsuarioJpaControllerRemote usuarioJPAcontroller;
 
 	private Usuario usuario;
-	private Boolean log =false;
+	private Boolean log = false;
 	private String email;
 	private String password;
-
-
-	
 
 	public String doLogin() {
 		usuario = new Usuario();
 		usuario.setNome(email);
 		usuario.setPassword(password);
 		Usuario u = usuarioJPAcontroller.findByLoginAndSenha(usuario);
-	
+
 		if (u != null) {
-		log=true;
+			log = true;
 			return "/portal/index.xhtml";
-			
+
 		} else {
-			log=false;
+			log = false;
 			return null;
 		}
 	}
-	
+
 	public String createUsuario() {
 		usuarioJPAcontroller.create(usuario);
 		return null;
 	}
-	
+
 	public String doAgenda() {
-		log=true;
+		log = true;
 		return "/faces/portal/cadPaciente.xhtml";
 	}
 	
+	public String doCadExames() {
+		return "/faces/portal/cadExame.xhtml";
+	}
+
 	public String doCadUsuario() {
 		return "/createUsr/index.xhtml";
 	}
@@ -63,6 +64,7 @@ public class UsuarioBean implements Serializable {
 	public Boolean isLoggedIn() {
 		return log;
 	}
+
 	public Usuario getUsuario() {
 		return (Usuario) usuario;
 	}
@@ -86,6 +88,5 @@ public class UsuarioBean implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
 }
