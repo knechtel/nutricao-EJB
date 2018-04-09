@@ -55,7 +55,7 @@ https://www.youtube.com/watch?v=xSHXMcRsF0A
 </br>
 
 
-7)Now we access this url http://localhost:8080/nutricao-WEB/test.jsf
+7)Now we access this url http://localhost:8080/nutricao_web/
 
 8)look the database and make sure that we have one user inserted in database.
 
