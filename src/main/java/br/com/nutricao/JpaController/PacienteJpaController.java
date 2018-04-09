@@ -33,5 +33,15 @@ public class PacienteJpaController implements PacienteJpaControllerRemote {
 		     em.remove(paciente);
 		}
 	}
+	
+	public Paciente findById(Integer id) {
+		return em.find(Paciente.class, id);
+	} 
+	
+	
+	public void update(Paciente paciente) {
+		em.merge(paciente);
+	}
+	
 
 }

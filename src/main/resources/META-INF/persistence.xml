@@ -7,9 +7,10 @@
         <class>br.com.nutricao.bean.AgendaAtendimento</class>	
             <class>br.com.nutricao.bean.Alimento</class>
                 <class>br.com.nutricao.bean.Paciente</class>
-                    <class>br.com.nutricao.bean.PlanoAlimentar</class>			
+                    <class>br.com.nutricao.bean.PlanoAlimentar</class>
+                    <class>br.com.nutricao.bean.Exame</class>			
          <properties>
-      
+         
 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
 	<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 <property name="hibernate.connection.username" value="root"/> 

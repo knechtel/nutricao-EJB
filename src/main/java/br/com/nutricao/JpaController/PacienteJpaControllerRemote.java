@@ -10,4 +10,7 @@ public interface PacienteJpaControllerRemote {
 	public List<Paciente> findAll();
 	
 	public void delete(Paciente paciente);
+	
+	public Paciente findById(Integer id) ;
+	public void update(Paciente paciente);
 }

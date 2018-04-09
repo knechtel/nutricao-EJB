@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -45,7 +43,12 @@ public class Paciente implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Atividade> listAtividade;
 	
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<Exame> listExame;
+	
 	private PlanoAlimentar planoAlimentar;
+
+
 
 	public Integer getId() {
 		return id;
@@ -102,5 +105,17 @@ public class Paciente implements Serializable {
 	public void setListAlimentoAlergico(List<Alimento> listAlimentoAlergico) {
 		this.listAlimentoAlergico = listAlimentoAlergico;
 	}
+
+	public List<Exame> getListExame() {
+		return listExame;
+	}
+
+	public void setListExame(List<Exame> listExame) {
+		this.listExame = listExame;
+	}
+
+
+
+	
 
 }
