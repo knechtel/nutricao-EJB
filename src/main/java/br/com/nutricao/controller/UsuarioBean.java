@@ -86,6 +86,8 @@ public class UsuarioBean implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public String doCadExames() {
+		return "/portal/cadExame.xhtml";
+	}
 	
 }
