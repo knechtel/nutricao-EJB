@@ -25,7 +25,7 @@ public class ProfissionalSaudeJpaController implements ProfissionalSaudeJpaContr
 
 
 	public List<ProfissionalSaude> findAll(){
-		List<ProfissionalSaude> listPaciente = em.createNamedQuery("ProfissionalSaude.findAll").getResultList();
+		List<ProfissionalSaude> listPaciente = em.createNamedQuery("ProfissionalSaude.findAll",ProfissionalSaude.class).getResultList();
 		return listPaciente;
 	}
 }
