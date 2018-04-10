@@ -23,7 +23,7 @@ public class PacienteJpaController implements PacienteJpaControllerRemote {
 	}
 	@Override
 	public List<Paciente> findAll() {
-		List<Paciente> listPaciente = em.createNamedQuery("Paciente.findAll").getResultList();
+		List<Paciente> listPaciente = em.createNamedQuery("Paciente.findAll",Paciente.class).getResultList();
 		return listPaciente;
 	}
 	@Override
