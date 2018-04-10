@@ -9,6 +9,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import br.com.nutricao.JpaController.ProfissionalSaudeJpaControllerRemote;
+import br.com.nutricao.bean.Paciente;
 import br.com.nutricao.bean.ProfissionalSaude;
 
 
@@ -59,6 +60,12 @@ public class ProfissiobalSaudeBean {
 		this.listProfissionalSaude = listProfissionalSaude;
 	}
 	
+	public String deleteAction(ProfissionalSaude profissionaSaude) {
+
+		listProfissionalSaude.remove(profissionaSaude);
+		profissionalSaudeRemote.delete(profissionaSaude);
 	
+		return null;
+	}
 
 }

@@ -22,9 +22,16 @@ public class ProfissionalSaudeJpaController implements ProfissionalSaudeJpaContr
 		em.persist(profissionalSaude);
 	}
 
-
-	public List<ProfissionalSaude> findAll(){
-		List<ProfissionalSaude> listPaciente = em.createNamedQuery("ProfissionalSaude.findAll",ProfissionalSaude.class).getResultList();
+	public List<ProfissionalSaude> findAll() {
+		List<ProfissionalSaude> listPaciente = em.createNamedQuery("ProfissionalSaude.findAll", ProfissionalSaude.class)
+				.getResultList();
 		return listPaciente;
+	}
+
+	public void delete(ProfissionalSaude profissionalSaude) {
+		em.createQuery("DELETE FROM ProfissionalSaude p  WHERE id=" + profissionalSaude.getId()).executeUpdate();
+		if (em.contains(profissionalSaude)) {
+			em.remove(profissionalSaude);
+		}
 	}
 }

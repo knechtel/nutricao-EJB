@@ -8,4 +8,6 @@ public interface ProfissionalSaudeJpaControllerRemote {
 
 	void create(ProfissionalSaude profissionalSaude);
 	public List<ProfissionalSaude> findAll();
+	
+	public void delete(ProfissionalSaude profissionalSaude);
 }
