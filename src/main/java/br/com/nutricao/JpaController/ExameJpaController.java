@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import br.com.nutricao.bean.Exame;
-import br.com.nutricao.bean.Paciente;
 
 @Stateless
 @Remote(ExameJpaControllerRemote.class)
