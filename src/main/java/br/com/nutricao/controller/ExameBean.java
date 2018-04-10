@@ -7,8 +7,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.model.SelectItem;
-import javax.faces.model.SelectItemGroup;
 import javax.inject.Named;
 
 import br.com.nutricao.JpaController.ExameJpaControllerRemote;
@@ -66,7 +64,6 @@ public class ExameBean implements Serializable {
 
 		listPaciente = pacienteJpaControllerRemote.findAll();
 
-		System.out.println("sim aquiiiiii >>>>>");
 		return listPaciente;
 	}
 
@@ -85,7 +82,7 @@ public class ExameBean implements Serializable {
 	public String persist() {
 		exame.setPaciente(pacienteJpaControllerRemote.findById(idPaciente));
 		exameJpaControllerRemote.create(exame);
-		return null;
+		return "/faces/portal/cadExame/successExame.xhtml";
 	}
 
 }

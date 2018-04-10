@@ -90,4 +90,8 @@ public class UsuarioBean implements Serializable {
 		return "/portal/cadExame.xhtml";
 	}
 	
+	public String doIndex() {
+		return "/portal/index.xhtml";
+	}
+	
 }
