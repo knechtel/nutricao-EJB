@@ -28,10 +28,6 @@ public class PacienteExameBean implements Serializable{
 	
 	@PostConstruct
 	public void init() {
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-		System.out.println(pacienteBean.getPaciente().getAltura());
-		
-		//listExame = pacienteJpa.findExames(pacienteBean.getPaciente().getId()).getListExame();
 	
 	}
 

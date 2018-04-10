@@ -23,9 +23,7 @@ public class ProfissiobalSaudeBean {
 	private List<ProfissionalSaude> listProfissionalSaude;
 	
 	public ProfissiobalSaudeBean() {
-		// TODO Auto-generated constructor stub
-		
-
+	
 		
 	}
 
