@@ -23,7 +23,7 @@ public class UsuarioBean implements Serializable {
 	private UsuarioJpaControllerRemote usuarioJPAcontroller;
 
 	private Usuario usuario;
-	private Boolean log;
+	private Boolean log=false;
 	private String email;
 	private String password;
 
