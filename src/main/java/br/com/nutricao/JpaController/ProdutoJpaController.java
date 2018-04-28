@@ -34,7 +34,7 @@ public class ProdutoJpaController implements ProdutoJpaControllerRemote {
 	}
 	
 	public void delete(Produto produto) {
-		em.createQuery("DELETE FROM Exame e WHERE id=" + produto.getId()).executeUpdate();
+		em.createQuery("DELETE FROM Produto e WHERE id=" + produto.getId()).executeUpdate();
 		if (em.contains(produto)){
 		     em.remove(produto);
 		}

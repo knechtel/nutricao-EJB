@@ -7,6 +7,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -28,11 +30,14 @@ public class ProdutoBean implements Serializable {
 
 	@EJB
 	private ProdutoJpaControllerRemote produtoController;
+	
+	
 
 	public String create() {
 		produtoController.create(produto);
 		listProduto = produtoController.findAll();
 		produto = new Produto();
+
 		 return "cadProduto?faces-redirect=true";
 	}
 
