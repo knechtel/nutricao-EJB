@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -13,7 +14,7 @@ import br.com.nutricao.JpaController.ExameJpaControllerRemote;
 import br.com.nutricao.JpaController.PacienteJpaControllerRemote;
 import br.com.nutricao.bean.Exame;
 import br.com.nutricao.bean.Paciente;
-@SessionScoped
+@RequestScoped
 @Named("pacienteBean")
 
 public class PacienteBean implements Serializable {
