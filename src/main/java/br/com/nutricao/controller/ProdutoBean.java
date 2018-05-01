@@ -30,15 +30,20 @@ public class ProdutoBean implements Serializable {
 
 	@EJB
 	private ProdutoJpaControllerRemote produtoController;
-	
-	
+
+	private String moeda;
 
 	public String create() {
+		moeda = moeda.replace("R$", " ");
+		moeda = moeda.replace(".", "");
+		moeda = moeda.replace(",", ".");
+		produto.setPreco(new Double(moeda));
 		produtoController.create(produto);
 		listProduto = produtoController.findAll();
 		produto = new Produto();
+		moeda = "";
 
-		 return "cadProduto?faces-redirect=true";
+		return "cadProduto?faces-redirect=true";
 	}
 
 	@PostConstruct
@@ -66,13 +71,20 @@ public class ProdutoBean implements Serializable {
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
-	
+
 	public String deleteAction(Produto produto) {
 
-		
 		listProduto.remove(produto);
 		produtoController.delete(produto);
 		return null;
+	}
+
+	public String getMoeda() {
+		return moeda;
+	}
+
+	public void setMoeda(String moeda) {
+		this.moeda = moeda;
 	}
 
 }

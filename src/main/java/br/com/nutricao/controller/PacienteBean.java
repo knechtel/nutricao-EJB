@@ -14,7 +14,7 @@ import br.com.nutricao.JpaController.ExameJpaControllerRemote;
 import br.com.nutricao.JpaController.PacienteJpaControllerRemote;
 import br.com.nutricao.bean.Exame;
 import br.com.nutricao.bean.Paciente;
-@RequestScoped
+@SessionScoped
 @Named("pacienteBean")
 
 public class PacienteBean implements Serializable {
