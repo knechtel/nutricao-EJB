@@ -45,9 +45,8 @@ public class Paciente implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Exame> listExame;
 	
-	private PlanoAlimentar planoAlimentar;
-
-
+	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+	private List<PlanoAlimentar> planos;
 
 	public Integer getId() {
 		return id;

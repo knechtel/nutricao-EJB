@@ -9,13 +9,14 @@
                 <class>br.com.nutricao.bean.Paciente</class>
                     <class>br.com.nutricao.bean.PlanoAlimentar</class>
                     <class>br.com.nutricao.bean.Exame</class>	
-                    <class>br.com.nutricao.bean.Produto</class>			
+                    <class>br.com.nutricao.bean.Produto</class>
+                    <class>br.com.nutricao.bean.PlanoAlimentarItem</class>			
          <properties>
          
 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
 	<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 <property name="hibernate.connection.username" value="root"/> 
-<property name="hibernate.connection.password" value=""/>
+<property name="hibernate.connection.password" value="root"/>
 	<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/test" />
   <property name="hibernate.max_fetch_depth" value="3"/>
   <property name="hibernate.hbm2ddl.auto" value="update"/>
