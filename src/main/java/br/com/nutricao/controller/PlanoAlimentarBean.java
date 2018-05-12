@@ -62,7 +62,7 @@ public class PlanoAlimentarBean implements Serializable {
 		this.plano.setPaciente(pacienteJpaControllerRemote.findById(this.idPaciente));
 		this.planoAlimentarController.create(this.plano);
 		this.init();
-		return "cadPlanoSuccess?faces-redirect=true";
+		return "cadPlanoSuccess.xhtml?faces-redirect=true";
 	}
 	
 	public void addItem() {
