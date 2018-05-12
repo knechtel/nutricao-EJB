@@ -1,7 +1,6 @@
 package br.com.nutricao.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -48,11 +47,15 @@ public class PlanoAlimentarBean implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		this.listPaciente = pacienteJpaControllerRemote.findAll();
+		this.loadPacientes();
 		this.listAlimento = alimentoJpaControllerRemote.findAll();
 		this.plano = new PlanoAlimentar();
 		this.listItens = this.plano.getItens();
 		this.item = new PlanoAlimentarItem();
+	}
+	
+	public void loadPacientes() {
+		this.listPaciente = pacienteJpaControllerRemote.findAll();
 	}
 	
 	public String create() {
@@ -67,6 +70,10 @@ public class PlanoAlimentarBean implements Serializable {
 		this.plano.addItem(this.item);
 		this.item = new PlanoAlimentarItem();
 		this.listItens = this.plano.getItens();
+	}
+	
+	public void deleteItem(PlanoAlimentarItem item) {
+		this.listItens.remove(item);
 	}
 
 	public List<Paciente> getListPaciente() {

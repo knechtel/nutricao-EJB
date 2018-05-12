@@ -33,6 +33,10 @@ public class PlanoAlimentarItem implements Serializable {
 	private Alimento alimento;
 	
 	private Integer quantidade;
+	
+	public PlanoAlimentarItem() {
+		this.quantidade = 1;
+	}
 
 	public Integer getId() {
 		return id;
