@@ -90,13 +90,13 @@ public class PacienteBean implements Serializable {
 	public String deleteExameAction(Exame exame) {
 		exameJpa.delete(exame);
 		listExame.remove(exame);
-		return "pacienteExames.xhtml";
+		return "viewPaciente.xhtml";
 	}
 	
 	public String examesAction(Paciente paciente) {
 		this.paciente = paciente;
 		listExame = exameJpa.findByIdPaciente(paciente.getId());
-		return "pacienteExames.xhtml";
+		return "viewPaciente.xhtml";
 	}
 	
 	public String update() {

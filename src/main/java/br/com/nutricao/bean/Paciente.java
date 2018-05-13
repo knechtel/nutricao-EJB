@@ -18,27 +18,29 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p") })
+@NamedQueries({ @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p ORDER BY p.nome") })
 @Table(name = "paciente")
 public class Paciente implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	private Integer id;
+	
 	private String CPF;
 	private String nome;
 	private Integer idade;
 	private Integer altura;
 	private Double peso;
+	
 	@JoinTable(name = "paciente_alergico_alimento", joinColumns = {
 			@JoinColumn(name = "paciente_id", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "alimento_id", referencedColumnName = "id") })
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Alimento> listAlimentoAlergico;
+	
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Atividade> listAtividade;
 	
@@ -111,9 +113,4 @@ public class Paciente implements Serializable {
 	public void setListExame(List<Exame> listExame) {
 		this.listExame = listExame;
 	}
-
-
-
-	
-
 }
