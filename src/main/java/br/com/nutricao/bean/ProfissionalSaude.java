@@ -15,19 +15,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-
 @Entity
 @NamedQueries({ @NamedQuery(name = "ProfissionalSaude.findAll", query = "SELECT p FROM ProfissionalSaude p") })
 @Table(name = "profissionalSaude")
 public class ProfissionalSaude implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1596799321534015424L;
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String cpf;
 	private String tipo;
 	private String nome;
@@ -38,37 +36,44 @@ public class ProfissionalSaude implements Serializable{
 			@JoinColumn(name = "atividade_id", referencedColumnName = "id") })
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Atividade> listAtividade;
+	
 	public Integer getId() {
 		return id;
 	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
 	public String getCpf() {
 		return cpf;
 	}
+	
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
 	public String getTipo() {
 		return tipo;
 	}
+	
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public List<Atividade> getListAtividade() {
 		return listAtividade;
 	}
+	
 	public void setListAtividade(List<Atividade> listAtividade) {
 		this.listAtividade = listAtividade;
 	}
-	
-	
-
 }

@@ -12,44 +12,36 @@ import br.com.nutricao.JpaController.ProfissionalSaudeJpaControllerRemote;
 import br.com.nutricao.bean.Paciente;
 import br.com.nutricao.bean.ProfissionalSaude;
 
-
 @Named
 @RequestScoped
 public class ProfissiobalSaudeBean {
 	@EJB
 	private ProfissionalSaudeJpaControllerRemote profissionalSaudeRemote;
+	
 	@EJB
 	private ProfissionalSaudeJpaControllerRemote profissionalSaudeRemoteList;
+	
 	private ProfissionalSaude profissionalSaude;
 	private List<ProfissionalSaude> listProfissionalSaude;
-	
-	public ProfissiobalSaudeBean() {
-	
-		
-	}
 
 	@PostConstruct
 	public void init() {
-		// In case you're updating an existing entity.
 		profissionalSaude = new ProfissionalSaude();
 		listProfissionalSaude = new ArrayList<ProfissionalSaude>();
 		listProfissionalSaude = profissionalSaudeRemoteList.findAll();
 	}
 
-
 	public ProfissionalSaude getProfissionalSaude() {
 		return profissionalSaude;
 	}
-
 
 	public void setProfissionalSaude(ProfissionalSaude profissionalSaude) {
 		this.profissionalSaude = profissionalSaude;
 	}
 	
 	public String create() {
-		
 		profissionalSaudeRemote.create(profissionalSaude);
-		return "cadPrSuccess.xhtml";
+		return "cadPrSaude.xhtml?faces-redirect=true";
 	}
 
 	public List<ProfissionalSaude> getListProfissionalSaude() {
@@ -61,10 +53,8 @@ public class ProfissiobalSaudeBean {
 	}
 	
 	public String deleteAction(ProfissionalSaude profissionaSaude) {
-
 		listProfissionalSaude.remove(profissionaSaude);
 		profissionalSaudeRemote.delete(profissionaSaude);
-	
 		return null;
 	}
 

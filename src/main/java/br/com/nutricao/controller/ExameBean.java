@@ -82,7 +82,7 @@ public class ExameBean implements Serializable {
 	public String persist() {
 		exame.setPaciente(pacienteJpaControllerRemote.findById(idPaciente));
 		exameJpaControllerRemote.create(exame);
-		return "successExame.xhtml?faces-redirect=true";
+		return "cadExameSuccess.xhtml?faces-redirect=true";
 	}
 
 }
