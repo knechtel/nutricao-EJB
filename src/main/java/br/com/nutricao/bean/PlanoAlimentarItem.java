@@ -34,6 +34,8 @@ public class PlanoAlimentarItem implements Serializable {
 	
 	private Integer quantidade;
 	
+	private String info;
+	
 	public PlanoAlimentarItem() {
 		this.quantidade = 1;
 	}
@@ -92,5 +94,13 @@ public class PlanoAlimentarItem implements Serializable {
 
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
 	}
 }
