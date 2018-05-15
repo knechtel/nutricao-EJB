@@ -12,7 +12,9 @@ import br.com.nutricao.bean.Alimento;
 import br.com.nutricao.bean.Paciente;
 import br.com.nutricao.bean.PlanoAlimentar;
 import br.com.nutricao.bean.PlanoAlimentarItem;
+import br.com.nutricao.bean.PlanoAlimentarPadraoPaciente;
 import br.com.nutricao.JpaController.PlanoAlimentarJpaControllerRemote;
+import br.com.nutricao.JpaController.PlanoAlimentarPadraoPacienteJpaControllerRemote;
 import br.com.nutricao.JpaController.AlimentoJpaControllerRemote;
 import br.com.nutricao.JpaController.PacienteJpaControllerRemote;
 import br.com.nutricao.JpaController.PlanoAlimentarItemJpaControllerRemote;
@@ -24,49 +26,73 @@ public class PlanoAlimentarBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private PacienteJpaControllerRemote pacienteJpaControllerRemote;
+	private PacienteJpaControllerRemote pacienteJpaController;
 	
 	@EJB
-	private AlimentoJpaControllerRemote alimentoJpaControllerRemote;
+	private AlimentoJpaControllerRemote alimentoJpaController;
 	
 	@EJB
-	private PlanoAlimentarJpaControllerRemote planoAlimentarController;
+	private PlanoAlimentarJpaControllerRemote planoJpaController;
 	
 	@EJB
-	private PlanoAlimentarItemJpaControllerRemote planoAlimentarItemController;
+	private PlanoAlimentarItemJpaControllerRemote planoItemJpaController;
+	
+	@EJB
+	private PlanoAlimentarPadraoPacienteJpaControllerRemote planoPadraoJpaController;
 	
 	private List<Paciente> listPaciente;
 	private List<Alimento> listAlimento;
+	private List<PlanoAlimentar> listPlanosPadrao;
 	
 	private PlanoAlimentar plano;
 	private PlanoAlimentarItem item;
 	private List<PlanoAlimentarItem> listItens;
+	private PlanoAlimentarPadraoPaciente planoAlimentarPadraoPaciente;
 	
 	private Integer idPaciente;
+	private Integer idPlanoPadrao;
 	private Integer idAlimento;
 	
 	@PostConstruct
 	public void init() {
 		this.loadPacientes();
-		this.listAlimento = alimentoJpaControllerRemote.findAll();
+		this.listAlimento = alimentoJpaController.findAll();
+		this.setListPlanosPadrao(planoJpaController.findPadroes());
 		this.plano = new PlanoAlimentar();
+		this.planoAlimentarPadraoPaciente = new PlanoAlimentarPadraoPaciente();
 		this.listItens = this.plano.getItens();
 		this.item = new PlanoAlimentarItem();
 	}
 	
 	public void loadPacientes() {
-		this.listPaciente = pacienteJpaControllerRemote.findAll();
+		this.listPaciente = pacienteJpaController.findAll();
 	}
 	
 	public String create() {
-		this.plano.setPaciente(pacienteJpaControllerRemote.findById(this.idPaciente));
-		this.planoAlimentarController.create(this.plano);
+		if (this.idPlanoPadrao != null && this.idPlanoPadrao != 0) {
+			this.createPlanoPadrao();
+		} else {
+			this.createPlanoNormal();
+		}
 		this.init();
 		return "cadPlanoSuccess.xhtml?faces-redirect=true";
 	}
 	
+	private void createPlanoNormal() {
+		if (this.idPaciente != null && this.idPaciente != 0) {
+			this.plano.setPaciente(pacienteJpaController.findById(this.idPaciente));
+		}
+		this.planoJpaController.create(this.plano);
+	}
+	
+	private void createPlanoPadrao() {
+		this.planoAlimentarPadraoPaciente.setPaciente(pacienteJpaController.findById(this.idPaciente));
+		this.planoAlimentarPadraoPaciente.setPlanoAlimentar(planoJpaController.findById(this.idPlanoPadrao));
+		this.planoPadraoJpaController.create(this.planoAlimentarPadraoPaciente);
+	}
+	
 	public void addItem() {
-		this.item.setAlimento(this.alimentoJpaControllerRemote.findById(this.idAlimento));
+		this.item.setAlimento(this.alimentoJpaController.findById(this.idAlimento));
 		this.plano.addItem(this.item);
 		this.item = new PlanoAlimentarItem();
 		this.listItens = this.plano.getItens();
@@ -90,6 +116,14 @@ public class PlanoAlimentarBean implements Serializable {
 
 	public void setListAlimento(List<Alimento> listAlimento) {
 		this.listAlimento = listAlimento;
+	}
+
+	public List<PlanoAlimentar> getListPlanosPadrao() {
+		return listPlanosPadrao;
+	}
+
+	public void setListPlanosPadrao(List<PlanoAlimentar> listPlanosPadrao) {
+		this.listPlanosPadrao = listPlanosPadrao;
 	}
 
 	public PlanoAlimentar getPlano() {
@@ -116,12 +150,28 @@ public class PlanoAlimentarBean implements Serializable {
 		this.listItens = listItens;
 	}
 
+	public PlanoAlimentarPadraoPaciente getPlanoAlimentarPadraoPaciente() {
+		return planoAlimentarPadraoPaciente;
+	}
+
+	public void setPlanoAlimentarPadraoPaciente(PlanoAlimentarPadraoPaciente planoAlimentarPadraoPaciente) {
+		this.planoAlimentarPadraoPaciente = planoAlimentarPadraoPaciente;
+	}
+
 	public Integer getIdPaciente() {
 		return idPaciente;
 	}
 
 	public void setIdPaciente(Integer idPaciente) {
 		this.idPaciente = idPaciente;
+	}
+
+	public Integer getIdPlanoPadrao() {
+		return idPlanoPadrao;
+	}
+
+	public void setIdPlanoPadrao(Integer idPlanoPadrao) {
+		this.idPlanoPadrao = idPlanoPadrao;
 	}
 
 	public Integer getIdAlimento() {

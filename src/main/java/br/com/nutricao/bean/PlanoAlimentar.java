@@ -27,7 +27,7 @@ public class PlanoAlimentar implements Serializable {
 	private String nome;
 	private String descricao;
 	
-	@ManyToOne
+	@ManyToOne(optional = true)
 	private Paciente paciente;
 	
 	@OneToMany(mappedBy = "planoAlimentar", cascade = CascadeType.ALL)
