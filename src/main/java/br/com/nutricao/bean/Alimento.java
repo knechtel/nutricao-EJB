@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "alimento")
-@NamedQueries({ @NamedQuery(name = "Alimento.findAll", query = "SELECT a FROM Alimento a") })
+@NamedQueries({ @NamedQuery(name = "Alimento.findAll", query = "SELECT a FROM Alimento a ORDER BY a.nome") })
 public class Alimento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
