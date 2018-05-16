@@ -33,10 +33,6 @@ public class CreateUsuarioBean {
 		return "cadUsrSuccess.xhtml";
 	}
 
-	public String gotToLogin() {
-		return "/index.jsf";
-	}
-
 	public Usuario getUsuario() {
 		return usuario;
 	}

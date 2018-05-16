@@ -3,72 +3,74 @@ package br.com.nutricao.controller;
 import java.io.Serializable;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import br.com.nutricao.JpaController.UsuarioJpaControllerRemote;
 import br.com.nutricao.bean.Usuario;
 
-@Stateless
 @SessionScoped
 @Named("usuarioBean")
-
 public class UsuarioBean implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
+
 	@EJB
 	private UsuarioJpaControllerRemote usuarioJPAcontroller;
 
+	private Boolean log = false; // is logged in or not
+	
 	private Usuario usuario;
-	private Boolean log=false;
+	
+	private String nome;
 	private String email;
 	private String password;
 
-
-	
-
 	public String doLogin() {
-		usuario = new Usuario();
-		usuario.setNome(email);
-		usuario.setPassword(password);
-		Usuario u = usuarioJPAcontroller.findByLoginAndSenha(usuario);
-	
+		this.usuario = new Usuario();
+		this.usuario.setEmail(email);
+		this.usuario.setPassword(password);
+		this.password = null;
+		Usuario u = this.usuarioJPAcontroller.findByLoginAndSenha(this.usuario);
 		if (u != null) {
-		log=true;
-			return "/portal/index.xhtml";
-			
+			this.log = true;
+			this.nome = u.getNome();
+			return "/portal/index.xhtml?faces-redirect=true";
 		} else {
-			log=false;
+			this.log = false;
 			return null;
 		}
 	}
 	
+	public String doLogout() {
+		this.usuario = null;
+		this.log = false;
+		return "/index.xhtml?faces-redirect=true";
+	}
+
 	public String createUsuario() {
-		usuarioJPAcontroller.create(usuario);
+		this.usuarioJPAcontroller.create(usuario);
 		return null;
-	}
-	
-	public String doAgenda() {
-		log=true;
-		return "/faces/portal/cadPaciente.xhtml";
-	}
-	
-	public String doCadUsuario() {
-		return "/createUsr/index.xhtml";
 	}
 
 	public Boolean isLoggedIn() {
-		return log;
+		return this.log;
 	}
+
 	public Usuario getUsuario() {
-		return (Usuario) usuario;
+		return this.usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmail() {
@@ -86,12 +88,4 @@ public class UsuarioBean implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String doCadExames() {
-		return "/portal/cadExame.xhtml";
-	}
-	
-	public String doIndex() {
-		return "/portal/index.xhtml";
-	}
-	
 }
