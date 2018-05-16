@@ -39,18 +39,18 @@ public class PacienteBean implements Serializable {
 	ExameJpaControllerRemote exameJpa;
 
 	public PacienteBean() {
-
+		
 	}
 
 	@PostConstruct
 	public void init() {
 		// TODO Auto-generated constructor stub
+	
 		listPaciente = new ArrayList<Paciente>();
 
 		listPaciente = pacienteJpaController.findAll();
 		// In case you're updating an existing entity.
 		paciente = new Paciente();
-		
 		
 	}
 
@@ -76,6 +76,8 @@ public class PacienteBean implements Serializable {
 	}
 
 	public List<Paciente> getListPaciente() {
+
+		listPaciente = pacienteJpaController.findAll();
 		return listPaciente;
 	}
 
