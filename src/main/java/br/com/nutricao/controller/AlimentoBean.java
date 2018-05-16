@@ -29,7 +29,7 @@ public class AlimentoBean implements Serializable {
 		listAlimento = alimentoController.findAll();
 		alimento = new Alimento();
 
-		return "cadAlimento?faces-redirect=true";
+		return "cadAlimento.xhtml?faces-redirect=true";
 	}
 
 	@PostConstruct

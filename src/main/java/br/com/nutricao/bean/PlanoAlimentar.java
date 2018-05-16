@@ -1,23 +1,24 @@
 package br.com.nutricao.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 @Entity
-@Table(name = "planoAlimentar")
+@Table(name = "plano_alimentar")
 public class PlanoAlimentar implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
@@ -25,8 +26,16 @@ public class PlanoAlimentar implements Serializable {
 	
 	private String nome;
 	private String descricao;
-	  @OneToMany
-	private List<Paciente>listPaciente;
+	
+	@ManyToOne(optional = true)
+	private Paciente paciente;
+	
+	@OneToMany(mappedBy = "planoAlimentar", cascade = CascadeType.ALL)
+	private List<PlanoAlimentarItem> itens;
+	
+	public PlanoAlimentar() {
+		this.itens = new ArrayList<PlanoAlimentarItem>();
+	}
 
 	public Integer getId() {
 		return id;
@@ -52,14 +61,25 @@ public class PlanoAlimentar implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public List<Paciente> getListPaciente() {
-		return listPaciente;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	public void setListPaciente(List<Paciente> listPaciente) {
-		this.listPaciente = listPaciente;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 	
-	
+	public List<PlanoAlimentarItem> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<PlanoAlimentarItem> itens) {
+		this.itens = itens;
+	}
+
+	public void addItem(PlanoAlimentarItem item) {
+		item.setPlanoAlimentar(this);
+		this.itens.add(item);
+	}
 
 }

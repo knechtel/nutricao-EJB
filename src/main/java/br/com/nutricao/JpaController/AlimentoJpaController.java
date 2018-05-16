@@ -30,6 +30,11 @@ public class AlimentoJpaController implements AlimentoJpaControllerRemote {
 			return list;
 		} finally {}
 	}
+	
+	@Override
+	public Alimento findById(Integer id) {
+		return em.find(Alimento.class, id);
+	}
 
 	@Override
 	public void delete(Alimento alimento) {
