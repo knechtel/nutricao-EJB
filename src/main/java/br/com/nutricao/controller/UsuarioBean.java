@@ -25,6 +25,7 @@ public class UsuarioBean implements Serializable {
 	private String nome;
 	private String email;
 	private String password;
+	private Integer tipo;
 
 	public String doLogin() {
 		this.usuario = new Usuario();
@@ -35,7 +36,12 @@ public class UsuarioBean implements Serializable {
 		if (u != null) {
 			this.log = true;
 			this.nome = u.getNome();
-			return "/portal/index.xhtml?faces-redirect=true";
+			this.tipo = u.getTipo();
+			if (this.isTipoAdmin()) {
+				return "/portal/index.xhtml?faces-redirect=true";
+			} else {
+				return "/site/index.xhtml?faces-redirect=true";
+			}
 		} else {
 			this.log = false;
 			return null;
@@ -49,6 +55,7 @@ public class UsuarioBean implements Serializable {
 	}
 
 	public String createUsuario() {
+		usuario.setTipo(Usuario.TIPO_NORMAL);
 		this.usuarioJPAcontroller.create(usuario);
 		return null;
 	}
@@ -87,5 +94,13 @@ public class UsuarioBean implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Boolean isTipoNormal() {
+		return this.tipo == Usuario.TIPO_NORMAL;
+	}
+	
+	public Boolean isTipoAdmin() {
+		return this.tipo == Usuario.TIPO_ADMIN;
 	}
 }

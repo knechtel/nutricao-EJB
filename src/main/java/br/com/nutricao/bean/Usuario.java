@@ -17,12 +17,16 @@ import javax.persistence.Table;
 @Table(name = "usuario")
 @NamedQueries({
 	@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
+	@NamedQuery(name = "Usuario.findAllByTipo", query = "SELECT u FROM Usuario u WHERE u.tipo = :tipo"),
 	@NamedQuery(name = "Usuario.findByLoginAndPassword", query = "SELECT u FROM Usuario u WHERE u.email LIKE :email "
 				+ " AND u.senha LIKE :senha")
 })
 public class Usuario implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
+	public static final Integer TIPO_NORMAL = 0;
+	public static final Integer TIPO_ADMIN = 1;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +39,12 @@ public class Usuario implements Serializable {
 	
 	@Column(length = 64)
 	private String senha;
+	
+	private Integer tipo;
+	
+	public Usuario() {
+		this.tipo = TIPO_NORMAL;
+	}
 
 	public Integer getId() {
 		return id;
@@ -82,6 +92,14 @@ public class Usuario implements Serializable {
 		}
 		
 		this.senha = sb.toString();
+	}
+
+	public Integer getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
 	}
 
 }

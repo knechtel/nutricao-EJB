@@ -23,11 +23,13 @@ public class UsuarioJpaController implements UsuarioJpaControllerRemote {
 	}
 
 	public List<Usuario> findAll() {
-		try {
-			@SuppressWarnings("unchecked")
-			List<Usuario> list = em.createNamedQuery("Usuario.findAll").getResultList();
-			return list;
-		} finally {}
+		return em.createNamedQuery("Usuario.findAll", Usuario.class).getResultList();
+	}
+	
+	public List<Usuario> findAllAdmins() {
+		return em.createNamedQuery("Usuario.findAllByTipo", Usuario.class)
+			.setParameter("tipo", Usuario.TIPO_ADMIN)
+			.getResultList();
 	}
 
 	public Usuario findByLoginAndSenha(Usuario usuario) {
@@ -49,5 +51,13 @@ public class UsuarioJpaController implements UsuarioJpaControllerRemote {
 			return null;
 		else
 			return list.get(0);
+	}
+	
+	@Override
+	public void delete(Usuario usuario) {
+		em.createQuery("DELETE FROM Usuario WHERE id=" + usuario.getId()).executeUpdate();
+		if (em.contains(usuario)){
+		     em.remove(usuario);
+		}
 	}
 }
