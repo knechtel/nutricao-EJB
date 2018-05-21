@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p ORDER BY p.nome") })
+@NamedQueries({
+	@NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p ORDER BY p.nome"),
+	@NamedQuery(name = "Paciente.findByCPF", query = "SELECT p FROM Paciente p WHERE p.CPF = :cpf")
+})
 @Table(name = "paciente")
 public class Paciente implements Serializable {
 
@@ -29,7 +33,9 @@ public class Paciente implements Serializable {
 	@Basic(optional = false)
 	private Integer id;
 	
+	@Column(length = 11)
 	private String CPF;
+	
 	private String nome;
 	private Integer idade;
 	private Integer altura;

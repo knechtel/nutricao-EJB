@@ -9,8 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -41,6 +43,9 @@ public class Usuario implements Serializable {
 	private String senha;
 	
 	private Integer tipo;
+	
+	@OneToOne(optional = true)
+	private Paciente paciente;
 	
 	public Usuario() {
 		this.tipo = TIPO_NORMAL;
@@ -100,6 +105,14 @@ public class Usuario implements Serializable {
 
 	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 }
