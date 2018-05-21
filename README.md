@@ -39,4 +39,10 @@ https://www.youtube.com/watch?v=xSHXMcRsF0A
 <img src='https://3.bp.blogspot.com/-KRsidrqAtQI/WqoWOhzJQvI/AAAAAAAADLc/bSfFOoAItoMyM4UgeIO2qQPJAIyiSv95ACLcBGAs/s1600/Screen%2BShot%2B2018-03-15%2Bat%2B03.43.23.png'/>
 </br>
 
-7) On a browser, access http://localhost:8080/nutricao_web/
+9) In a broswser, access http://localhost:8080/nutricao_web/index.xhtml
+
+**Note:** the first admin user should be created directly in the database with password hashed using sha256. Example:
+```
+INSERT INTO `usuario` VALUES
+(1,'email@domain.com','Admin','fbfb386efea67e816f2dda0a8c94a98eb203757aebb3f55f183755a192d44467',1,NULL)
+```
