@@ -39,9 +39,22 @@ public class PacienteJpaController implements PacienteJpaControllerRemote {
 	
 	public Paciente findById(Integer id) {
 		return em.find(Paciente.class, id);
-	} 
+	}
+	
+	@Override
+	public Paciente findByCPF(String cpf) {
+		List<Paciente> list = em.createNamedQuery("Paciente.findByCPF", Paciente.class)
+				.setParameter("cpf", cpf)
+				.setMaxResults(1)
+				.getResultList();
+		if (list == null || list.size() == 0)
+			return null;
+		else
+			return list.get(0);
+	}
 	
 	public void update(Paciente paciente) {
 		em.merge(paciente);
 	}
+	
 }
