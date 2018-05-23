@@ -36,12 +36,12 @@ public class UsuarioBean implements Serializable {
 		Usuario u = this.usuarioJPAcontroller.findByLoginAndSenha(this.usuario);
 		if (u != null) {
 			this.log = true;
-			this.idPaciente = u.getPaciente().getId();
 			this.nome = u.getNome();
 			this.tipo = u.getTipo();
 			if (this.isTipoAdmin()) {
 				return "/portal/index.xhtml?faces-redirect=true";
 			} else {
+				this.idPaciente = u.getPaciente().getId();
 				return "/site/index.xhtml?faces-redirect=true";
 			}
 		} else {
