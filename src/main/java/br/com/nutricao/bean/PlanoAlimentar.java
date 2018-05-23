@@ -6,11 +6,13 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 @Entity
@@ -30,7 +32,8 @@ public class PlanoAlimentar implements Serializable {
 	@ManyToOne(optional = true)
 	private Paciente paciente;
 	
-	@OneToMany(mappedBy = "planoAlimentar", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "planoAlimentar", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OrderBy("dia, turno, opcao")
 	private List<PlanoAlimentarItem> itens;
 	
 	public PlanoAlimentar() {

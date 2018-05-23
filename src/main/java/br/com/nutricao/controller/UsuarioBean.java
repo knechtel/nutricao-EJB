@@ -22,6 +22,7 @@ public class UsuarioBean implements Serializable {
 	
 	private Usuario usuario;
 	
+	private Integer idPaciente;
 	private String nome;
 	private String email;
 	private String password;
@@ -35,6 +36,7 @@ public class UsuarioBean implements Serializable {
 		Usuario u = this.usuarioJPAcontroller.findByLoginAndSenha(this.usuario);
 		if (u != null) {
 			this.log = true;
+			this.idPaciente = u.getPaciente().getId();
 			this.nome = u.getNome();
 			this.tipo = u.getTipo();
 			if (this.isTipoAdmin()) {
@@ -70,6 +72,14 @@ public class UsuarioBean implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public Integer getIdPaciente() {
+		return idPaciente;
+	}
+
+	public void setIdPaciente(Integer idPaciente) {
+		this.idPaciente = idPaciente;
 	}
 
 	public String getNome() {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class PlanoAlimentarPadraoPaciente implements Serializable {
 	@ManyToOne
 	private Paciente paciente;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private PlanoAlimentar planoAlimentar;
 
 	public Integer getId() {
