@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 @Entity
@@ -51,6 +52,7 @@ public class Paciente implements Serializable {
 	private List<Atividade> listAtividade;
 	
 	@OneToMany(fetch = FetchType.LAZY)
+	@OrderBy("dataRealizacao DESC")
 	private List<Exame> listExame;
 	
 	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)

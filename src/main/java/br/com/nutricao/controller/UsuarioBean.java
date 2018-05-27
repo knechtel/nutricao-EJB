@@ -22,6 +22,7 @@ public class UsuarioBean implements Serializable {
 	
 	private Usuario usuario;
 	
+	private Integer idPaciente;
 	private String nome;
 	private String email;
 	private String password;
@@ -40,6 +41,7 @@ public class UsuarioBean implements Serializable {
 			if (this.isTipoAdmin()) {
 				return "/portal/index.xhtml?faces-redirect=true";
 			} else {
+				this.idPaciente = u.getPaciente().getId();
 				return "/site/index.xhtml?faces-redirect=true";
 			}
 		} else {
@@ -70,6 +72,14 @@ public class UsuarioBean implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public Integer getIdPaciente() {
+		return idPaciente;
+	}
+
+	public void setIdPaciente(Integer idPaciente) {
+		this.idPaciente = idPaciente;
 	}
 
 	public String getNome() {
