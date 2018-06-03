@@ -9,13 +9,13 @@ import javax.enterprise.context.RequestScoped;
 
 import javax.inject.Named;
 
+import br.com.nutricao.JpaController.AtividadeJpaControllerRemote;
 import br.com.nutricao.JpaController.PacienteJpaControllerRemote;
 import br.com.nutricao.JpaController.ProfissionalSaudeJpaControllerRemote;
 import br.com.nutricao.bean.AgendaAtendimento;
 import br.com.nutricao.bean.Atividade;
 import br.com.nutricao.bean.Paciente;
 import br.com.nutricao.bean.ProfissionalSaude;
-
 
 @Named("atividadeBean")
 @RequestScoped
@@ -28,10 +28,10 @@ public class AtividadeBean implements Serializable {
 	private Atividade atividade;
 	private Paciente paciente;
 	private ProfissionalSaude profissionalSaude;
-	
+
 	private Integer pacienteId;
 	private Integer prfissionalSaudeid;
-	
+
 	private List<Paciente> listPaciente;
 	private List<ProfissionalSaude> listProfissionalSaude;
 	private AgendaAtendimento AgendaAtendimento;
@@ -39,13 +39,15 @@ public class AtividadeBean implements Serializable {
 	private PacienteJpaControllerRemote pacienteJpa;
 	@EJB
 	private ProfissionalSaudeJpaControllerRemote profissionalSaudeJpa;
-	
+	@EJB
+	private AtividadeJpaControllerRemote atividadeJpa;
 	private List<Atividade> listAtividade;
-	
+
 	@PostConstruct
 	public void init() {
 		listPaciente = pacienteJpa.findAll();
-		listProfissionalSaude =profissionalSaudeJpa.findAll();
+		listProfissionalSaude = profissionalSaudeJpa.findAll();
+		listAtividade = atividadeJpa.findAll();
 	}
 
 	public Atividade getAtividade() {
@@ -56,9 +58,6 @@ public class AtividadeBean implements Serializable {
 		this.atividade = atividade;
 	}
 
-	
-	
-	
 	public Integer getPacienteId() {
 		return pacienteId;
 	}
@@ -76,8 +75,7 @@ public class AtividadeBean implements Serializable {
 	}
 
 	public String doCad() {
-		
-		
+
 		return "";
 	}
 
@@ -128,7 +126,5 @@ public class AtividadeBean implements Serializable {
 	public void setListAtividade(List<Atividade> listAtividade) {
 		this.listAtividade = listAtividade;
 	}
-	
-	
-	
+
 }
