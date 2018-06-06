@@ -6,7 +6,10 @@ import br.com.nutricao.bean.Atividade;
 
 public interface AtividadeJpaControllerRemote {
 
-	public void create(Atividade atividade);
+	public Atividade create(Atividade atividade);
 	
 	public List<Atividade> findAll();
+	
+	
+	
 }

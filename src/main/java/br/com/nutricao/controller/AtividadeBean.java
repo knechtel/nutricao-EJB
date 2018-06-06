@@ -1,14 +1,17 @@
 package br.com.nutricao.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import br.com.nutricao.JpaController.AgendaAtendimentoJpaControllerRemote;
 import br.com.nutricao.JpaController.AtividadeJpaControllerRemote;
 import br.com.nutricao.JpaController.PacienteJpaControllerRemote;
 import br.com.nutricao.JpaController.ProfissionalSaudeJpaControllerRemote;
@@ -34,17 +37,31 @@ public class AtividadeBean implements Serializable {
 
 	private List<Paciente> listPaciente;
 	private List<ProfissionalSaude> listProfissionalSaude;
-	private AgendaAtendimento AgendaAtendimento;
+	private AgendaAtendimento agendaAtendimento;
 	@EJB
 	private PacienteJpaControllerRemote pacienteJpa;
 	@EJB
 	private ProfissionalSaudeJpaControllerRemote profissionalSaudeJpa;
 	@EJB
 	private AtividadeJpaControllerRemote atividadeJpa;
+	@EJB
+	private AgendaAtendimentoJpaControllerRemote agendaAtendimentoJpa;
 	private List<Atividade> listAtividade;
+	@EJB
+	private AtividadeJpaControllerRemote atividadeCreate;
+	@EJB
+	private ProfissionalSaudeJpaControllerRemote profissionalSaudeCreate;
+
+	@EJB
+	private AgendaAtendimentoJpaControllerRemote agendaAtendimentoCreate;
 
 	@PostConstruct
 	public void init() {
+		System.out.println();
+		atividade = new Atividade();
+		agendaAtendimento = new AgendaAtendimento();
+		profissionalSaude = new ProfissionalSaude();
+		paciente = new Paciente();
 		listPaciente = pacienteJpa.findAll();
 		listProfissionalSaude = profissionalSaudeJpa.findAll();
 		listAtividade = atividadeJpa.findAll();
@@ -75,8 +92,58 @@ public class AtividadeBean implements Serializable {
 	}
 
 	public String doCad() {
+	      
+		paciente = pacienteJpa.findById(pacienteId);
+		// atividade.setAgendaAtendimento(agendaAtendimento);
 
-		return "";
+		atividade.setPaciente(paciente);
+		atividade = atividadeCreate.create(atividade);
+
+		// agendaAtendimento.setAtividade(atividade);
+		// agendaAtendimentoCreate.create(agendaAtendimento);
+		//
+
+		// atividadeJpa.create(atividade);
+		System.out.println("atividade = " + atividade + " atividade.id = " + atividade.getId());
+		System.out.println("atividade = " + atividade + " atividade.horaInicio = " + atividade.getDataHoraInicio());
+
+		listAtividade = new ArrayList<Atividade>();
+
+		listAtividade.add(atividade);
+
+		
+		profissionalSaude = profissionalSaudeJpa.findByID(prfissionalSaudeid);
+		profissionalSaude.setListAtividade(listAtividade);
+
+		System.out.println("profissionalSaude  = " + profissionalSaude.getId());
+		
+		profissionalSaudeJpa.merge(profissionalSaude);
+		// profissionalSaudeCreate.merge(profissionalSaude);
+		// atividadeJpa.create(atividade);
+
+		
+		// pacienteJpa.update(paciente);
+		// atividade.setAgendaAtendimento(agendaAtendimento);
+
+		// agendaAtendimentoJpa.create(agendaAtendimento);//
+
+		// if (listAtividade != null) {
+		// listAtividade.add(atividade);
+		// } else {
+		// listAtividade = new ArrayList<Atividade>();
+		// listAtividade.add(atividade);
+		// }
+		// List<Atividade> swapListAtividade = null;
+		//
+		// if (profissionalSaude.getListAtividade() == null) {
+		// swapListAtividade = new ArrayList<Atividade>();
+		// swapListAtividade.add(atividade);
+		// profissionalSaude.setListAtividade(listAtividade);
+		//
+		// // persisit
+		// }
+	
+		return "cadAtividadeSuccess.xhtml";
 	}
 
 	public List<Paciente> getListPaciente() {
@@ -112,11 +179,11 @@ public class AtividadeBean implements Serializable {
 	}
 
 	public AgendaAtendimento getAgendaAtendimento() {
-		return AgendaAtendimento;
+		return agendaAtendimento;
 	}
 
 	public void setAgendaAtendimento(AgendaAtendimento agendaAtendimento) {
-		AgendaAtendimento = agendaAtendimento;
+		this.agendaAtendimento = agendaAtendimento;
 	}
 
 	public List<Atividade> getListAtividade() {

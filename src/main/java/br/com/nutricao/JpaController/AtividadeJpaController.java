@@ -17,9 +17,11 @@ public class AtividadeJpaController implements AtividadeJpaControllerRemote {
 	@PersistenceContext(unitName = "nutricao-EJBPU")
 	private EntityManager em;
 	
-	public void create(Atividade atividade) {
+	public Atividade create(Atividade atividade) {
 		// TODO Auto-generated method stub
-		em.persist(atividade);
+		 em.persist(atividade);
+		 em.flush();
+		 return atividade;
 	}
 
 	public List<Atividade> findAll() {

@@ -34,4 +34,15 @@ public class ProfissionalSaudeJpaController implements ProfissionalSaudeJpaContr
 			em.remove(profissionalSaude);
 		}
 	}
+
+	@Override
+	public void merge(ProfissionalSaude profissionalSaude) {
+		em.merge(profissionalSaude);
+		
+	}
+	
+	public ProfissionalSaude findByID(Integer id) {
+		return em.find(ProfissionalSaude.class, id);
+		
+	}
 }

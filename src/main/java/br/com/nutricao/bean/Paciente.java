@@ -121,4 +121,14 @@ public class Paciente implements Serializable {
 	public void setListExame(List<Exame> listExame) {
 		this.listExame = listExame;
 	}
+
+	public List<Atividade> getListAtividade() {
+		return listAtividade;
+	}
+
+	public void setListAtividade(List<Atividade> listAtividade) {
+		this.listAtividade = listAtividade;
+	}
+	
+	
 }
