@@ -10,6 +10,6 @@ public interface AtividadeJpaControllerRemote {
 	
 	public List<Atividade> findAll();
 	
-	
+	public List<Atividade> findAtividade(Integer id);
 	
 }

@@ -9,14 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-
-@NamedQuery(name = "Atividade.findAll", query = "SELECT a FROM Atividade a ")
-
+@NamedQueries({
+@NamedQuery(name = "Atividade.findAll", query = "SELECT a FROM Atividade a "),
+@NamedQuery(name = "Atividade.findBYPaciente", query = "SELECT a FROM Atividade  a where  a.paciente.id = :id")
+})
 	
 @Table(name = "atividade")
 public class Atividade implements Serializable {

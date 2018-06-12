@@ -22,7 +22,8 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({
 	@NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p ORDER BY p.nome"),
-	@NamedQuery(name = "Paciente.findByCPF", query = "SELECT p FROM Paciente p WHERE p.CPF = :cpf")
+	@NamedQuery(name = "Paciente.findByCPF", query = "SELECT p FROM Paciente p WHERE p.CPF = :cpf"),
+	@NamedQuery(name = "Paciente.findAtividade", query =  "SELECT p FROM Paciente p  JOIN FETCH p.listAtividade  WHERE p.id = :id")
 })
 @Table(name = "paciente")
 public class Paciente implements Serializable {

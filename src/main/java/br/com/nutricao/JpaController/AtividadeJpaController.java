@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import br.com.nutricao.bean.Atividade;
+import br.com.nutricao.bean.Paciente;
 
 
 @Stateless
@@ -27,5 +28,11 @@ public class AtividadeJpaController implements AtividadeJpaControllerRemote {
 	public List<Atividade> findAll() {
 		List<Atividade> listPaciente = em.createNamedQuery("Atividade.findAll",Atividade.class).getResultList();
 		return listPaciente;
+	}
+	
+	public List<Atividade> findAtividade(Integer id) {
+		
+	
+		return em.createNamedQuery("Atividade.findBYPaciente",Atividade.class).setParameter("id", id).getResultList();
 	}
 }

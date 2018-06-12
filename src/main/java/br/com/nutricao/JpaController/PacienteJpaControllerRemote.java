@@ -11,4 +11,5 @@ public interface PacienteJpaControllerRemote {
 	public Paciente findById(Integer id);
 	public Paciente findByCPF(String cpf);
 	public void update(Paciente paciente);
+	public Paciente findAtividade(Integer id);
 }

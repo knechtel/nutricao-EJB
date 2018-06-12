@@ -57,4 +57,10 @@ public class PacienteJpaController implements PacienteJpaControllerRemote {
 		em.merge(paciente);
 	}
 	
+	public Paciente findAtividade(Integer id) {
+	
+		Paciente pt = em.createNamedQuery("Paciente.findAtividade",Paciente.class).setParameter("id", id).getSingleResult();
+	
+		return pt;
+	}
 }
