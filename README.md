@@ -36,7 +36,7 @@ https://www.youtube.com/watch?v=xSHXMcRsF0A
 8) Select project nutricao_web and nutricao-EJB
 
 <br>
-<img src='https://3.bp.blogspot.com/-KRsidrqAtQI/WqoWOhzJQvI/AAAAAAAADLc/bSfFOoAItoMyM4UgeIO2qQPJAIyiSv95ACLcBGAs/s1600/Screen%2BShot%2B2018-03-15%2Bat%2B03.43.23.png'/>
+<img src='https://1.bp.blogspot.com/-KH6xjgpOgvU/Xxu2iQ1QQjI/AAAAAAAAJKw/ZNACuRQVqEAaOnAF-d5WBAdV1BElv-uGQCLcBGAsYHQ/s1600/Screen%2BShot%2B2020-07-25%2Bat%2B01.34.38.png'/>
 </br>
 
 9) In a broswser, access http://localhost:8080/nutricao_web/index.xhtml
